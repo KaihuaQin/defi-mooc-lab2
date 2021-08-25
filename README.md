@@ -3,8 +3,10 @@
 ## Exercise
 In this exerecise, you are expected to implement a smart contract which performs a flash loan based liquidation.
 
-## Prerequisite
-You need to register an account on https://www.alchemy.com/ for the access to an archive Ethereum node.
+### Prerequisite
+- You need to register an account on https://www.alchemy.com/ for the access to an archive Ethereum node.
+
+- You have [docker](https://www.docker.com/) installed on your machine.
 
 ### Requirements
 
@@ -19,6 +21,11 @@ function opearte() external;
 ### Test case
 
 You are expected to liquidate `0x59CE4a2AC5bC3f5F225439B2993b86B42f6d3e9F` on Aave V2 which was liquidated at block `12489620`. Check out the [original liquidation transaction](https://etherscan.io/tx/0xac7df37a43fab1b130318bbb761861b8357650db2e2c6493b73d6da3d9581077).
+
+### Commands
+To test your contract:
+1. `docker build -t defi-mooc-lab2 .`
+2. `docker run -e ALCHE_API="$YOUR ALCHEMY ETHEREUM MAINNET API" -it defi-mooc-lab2 npm test`
 
 ### Grading
 

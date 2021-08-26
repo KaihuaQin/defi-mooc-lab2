@@ -28,7 +28,7 @@ describe("Liquidation", function () {
     const liquidationOperator = await LiquidationOperator.deploy(overrides = {gasPrice: gasPrice});
     await liquidationOperator.deployed();
 
-    const liquidationTx = await liquidationOperator.opearte(overrides = {gasPrice: gasPrice});
+    const liquidationTx = await liquidationOperator.operate(overrides = {gasPrice: gasPrice});
     const liquidationReceipt = await liquidationTx.wait();
 
     const liquidationEvents = liquidationReceipt.logs.filter(

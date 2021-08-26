@@ -12,10 +12,10 @@ In this exerecise, you are expected to implement a smart contract which performs
 
 - The smart contract should allow you to perform a flash loan, a liquidation, and an asset exchange in one blockchain transaction.
 
-- To ease marking, we require your contract to provide a unified interface `opearte`. By calling `opearte`, the flash loan, liquidation, and exchange should be executed properly. You are allowed to "hardcode" the execution logic and parameters in the `operate` function.
+- To ease marking, we require your contract to provide a unified interface `operate`. By calling `operate`, the flash loan, liquidation, and exchange should be executed properly. You are allowed to "hardcode" the execution logic and parameters in the `operate` function.
 
 ```javascript
-function opearte() external;
+function operate() external;
 ```
 
 ### Test case

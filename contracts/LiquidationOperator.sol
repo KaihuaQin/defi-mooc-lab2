@@ -2,7 +2,7 @@
 pragma solidity ^0.8.7;
 
 contract LiquidationOperator {
-    function opearte() external {
+    function operate() external {
         // Your solution
     }
 }

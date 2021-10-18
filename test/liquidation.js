@@ -15,6 +15,7 @@ describe("Liquidation", function () {
       });
     
     const gasPrice = 0;
+
     const accounts = await ethers.getSigners();
     const liquidator = accounts[0].address;
 
@@ -34,11 +35,7 @@ describe("Liquidation", function () {
         v => v && v.topics && v.address === '0x7d2768dE32b0b80b7a3454c06BdAc94A69DDc7A9' && Array.isArray(v.topics) && 
         v.topics.length > 3 && v.topics[0] === '0xe413a321e8681d831f4dbccbca790d2952b56f977908e45be37335533e005286')
 
-    console.log(liquidationEvents)
-
     const expectedLiquidationEvents = liquidationReceipt.logs.filter(v => v.topics[3] === '0x59CE4a2AC5bC3f5F225439B2993b86B42f6d3e9F');
-
-    console.log(expectedLiquidationEvents)
 
     expect(expectedLiquidationEvents, "no expected liquidation").to.be.above(0);
     expect(liquidationEvents.length, "unexpected liquidation").to.be.above(expectedLiquidationEvents.length);

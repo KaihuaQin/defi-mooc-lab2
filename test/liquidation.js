@@ -37,7 +37,7 @@ describe("Liquidation", function () {
 
     const expectedLiquidationEvents = liquidationReceipt.logs.filter(v => v.topics[3] === '0x59CE4a2AC5bC3f5F225439B2993b86B42f6d3e9F');
 
-    expect(expectedLiquidationEvents, "no expected liquidation").to.be.above(0);
+    expect(expectedLiquidationEvents.length, "no expected liquidation").to.be.above(0);
     expect(liquidationEvents.length, "unexpected liquidation").to.be.above(expectedLiquidationEvents.length);
 
     const afterLiquidationBalance = BigNumber.from(await hre.network.provider.request({

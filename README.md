@@ -1,12 +1,12 @@
 # Hands-on Exercise: Flash Loan based Liquidation
 
 ## Exercise
-In this exerecise, you are expected to implement a smart contract which performs a flash loan based liquidation.
+In this exercise, you are expected to implement a smart contract that performs a flash loan based liquidation.
 
 ### Prerequisite
-- You need to register an account on https://www.alchemy.com/ for the access to an archive Ethereum node.
+- You need to register an account on https://www.alchemy.com/ for access to an archive Ethereum node.
 
-- You have [docker](https://www.docker.com/) installed on your machine.
+- You need to prepare the nodeJS environment for the project yourself, or have [docker](https://www.docker.com/) installed on your machine.
 
 ### Requirements
 
@@ -29,11 +29,11 @@ To test your contract:
 
 ### Grading
 
-Your grade is determined by the following metrics:
+Your grade is determined by the actual profit you earn in the test case. After the program execution, you should see `Profit xxx ETH` at the end of a successful liquidation. If you are not using the docker environment, for successful execution you should also see a `profit.txt` file which contains the amount of ETH that you earned after the liquidation. **If your implementation is correct, you should be receiving at least 21 ETH as the profit.** Note that we reduce the gas fee to be zero to encourage programming complicated liquidation strategies. 
 
-- The gas consumed to deploy your smart contract
-- The gas consumed to execute your transaction
-- The actual profit you earn in the test case
+### Submission
+
+Your submission should be a single `LiquidationOperator.sol` file **that contains at most one import statement `import "hardhat/console.sol";`**. If you plan to include libraries or interfaces from other npm packages, please manually add them to your contract file so that we have a unified environment for grading. 
 
 ## Background
 
@@ -57,7 +57,7 @@ By calling this function, you then repay some amount of token D to Aave and in r
 You should make sure that the user is in a liquidatable state. Otherwise, the aave smart contract would revert your transaction and you would pay transaction fees for an unsuccessful liquidation. 
 
 ### Uniswap flash loan
-What if you don't have any upfront token D, but you do need some to repay in the liquidation? You can use flash loans! A Uniswap flash loan (a.k.a flash swap) can grant you the cryptocurrenies available in the pool without any collateral, as long as you preserve the constant `K` in the end of the transaction. Check out the detailed code snippet ([Uniswap V2](https://github.com/Uniswap/uniswap-v2-core/blob/master/contracts/UniswapV2Pair.sol)) in the following.
+What if you don't have any upfront token D, but you do need some to repay in the liquidation? You can use flash loans! A Uniswap flash loan (a.k.a flash swap) can grant you the cryptocurrencies available in the pool without any collateral, as long as you preserve the constant `K` in the end of the transaction. Check out the detailed code snippet ([Uniswap V2](https://github.com/Uniswap/uniswap-v2-core/blob/master/contracts/UniswapV2Pair.sol)) in the following.
 
 ```javascript
 function swap(uint amount0Out, uint amount1Out, address to, bytes calldata data) external lock {
@@ -101,3 +101,6 @@ Back to liquidation, you can program the liquidation logic in the `uniswapV2Call
 
 ### What do you need to do after liquidation?
 With the flash loan, you now have enough token D. You can repay the debt for the borrowing position and claim the collateral token C. Congratulation! A successful liquidation is completed, but, wait, you still need to repay the flash loan. Remember that you need to preserve the `K`. In the exercise, you are required to convert every earned token to ETH through e.g., exchanges. This is for easing the grading.
+
+### More reference
+Please check out the links in the template file (`contracts/LiquidationOperator.sol`) for how to use the interfaces. [Etherscan](https://etherscan.io/) is a handy tool for exploring addresses, blocks, and transactions on-chain. If you have further questions or comments, please feel free to [submit an issue](./Issues).

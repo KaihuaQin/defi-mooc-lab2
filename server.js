@@ -58,8 +58,10 @@ function get_score(path) {
       ret['score'] = 13;
     } else if (eth_amount < 43) {
       ret['score'] = 14;
-    } else {
+    } else if (eth_amount >= 43) {
       ret['score'] = 15;
+    } else {
+      // something went wrong, eth_amount is NaN
     }
   } catch (e) {
     ret['status'] = 'err';
